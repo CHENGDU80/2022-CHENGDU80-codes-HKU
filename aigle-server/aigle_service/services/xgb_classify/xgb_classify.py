@@ -66,6 +66,8 @@ def xgb_classify():
     # feature_name = data_train.columns[feature_idx]
     # feature_name = feature_name.tolist()
 
+    print("Histogram start")
+
     # Histogram
     col = list(data_train.columns)
     lis = list(t.feature_importances_)
@@ -74,6 +76,8 @@ def xgb_classify():
     f_importance = pd.DataFrame(f_importance)
     f_importance = f_importance.sort_values(by='lis', ascending=False)
     f_plot = f_importance.iloc[0:15, :]
+
+    print("Histogram done")
 
     return {
         'ROC': {

@@ -1,5 +1,5 @@
 import sys
-from aigle_service.services.clf_classify import clf_classify
+from aigle_service.services.clf_classify.clf_classify import clf_classify
 from aigle_service.services.xgb_classify.xgb_classify import xgb_classify
 from flask import Blueprint
 

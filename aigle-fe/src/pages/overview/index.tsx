@@ -191,22 +191,10 @@ const overviewPage: React.FC = () => {
               }
             }}
           >
-            {/* {isLoading
-              ? 'Loading data...'
-              : isSuccess
-              ? '🥰 Next Step >'
-              : isError
-              ? 'Error'
-              : 'Start Training'} */}
             {btnTextMap[step]}
           </Button>
         </TrainingBtnSection>
-        <InfoSection>
-          {/* {isLoading && 'Loading data...'}
-          {isSuccess && data?.data}
-          {isError && error?.response?.data?.error} */}
-          {infoTextMap[step]}
-        </InfoSection>
+        <InfoSection>{infoTextMap[step]}</InfoSection>
         {(isLoading || isPreProcessLoading) && (
           <LoadingSection>
             <Loading></Loading>

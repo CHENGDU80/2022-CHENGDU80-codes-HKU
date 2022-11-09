@@ -29,3 +29,31 @@ export const useRQPreprocessData = (
     {},
     queryOption || {}
   );
+
+export const useRQXgboost = (
+  queryOption?: Omit<
+    UseQueryOptions<API.XgboostResponse, API.ErrorResp>,
+    'queryKey' | 'queryFn'
+  >
+) =>
+  useGet<{}, API.XgboostResponse>(
+    '/data/xgboost',
+    '/data/xgboost',
+    {},
+    {},
+    queryOption || {}
+  );
+
+export const useRQClf = (
+  queryOption?: Omit<
+    UseQueryOptions<API.ClfResponse, API.ErrorResp>,
+    'queryKey' | 'queryFn'
+  >
+) =>
+  useGet<{}, API.ClfResponse>(
+    '/data/clf',
+    '/data/clf',
+    {},
+    {},
+    queryOption || {}
+  );

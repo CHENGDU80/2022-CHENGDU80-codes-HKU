@@ -1,14 +1,16 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { trainingState } from '@/stores/training';
 import Locked from '@components/illustration/locked';
-import { PageHeader } from 'antd';
+import { PageHeader, Tabs } from 'antd';
 import useResizable from '@/hooks/useResizable';
 import Resizer from '@components/resizer';
 import { IconMoreStroked } from '@douyinfe/semi-icons';
 import { COLOR_PALETTE } from '@/const/theme/color';
+import { DashboardState, dashboardState } from '@/stores/dashboard';
+import Visualization from './components/visualization';
 
 const { useRef, useState, useEffect, useMemo } = React;
 
@@ -35,6 +37,10 @@ const DataBoardContent = styled.section`
   max-height: calc(100vh - 48px);
   height: calc(100vh - 48px);
   overflow-y: hidden;
+
+  .ant-tabs-nav {
+    width: 100% !important;
+  }
 `;
 
 const GraphTableWrapperSection = styled.section``;
@@ -56,6 +62,11 @@ const Dashboard: React.FC<DashboardProps> = (props: DashboardProps) => {
     size: number;
     handler: (event: React.MouseEvent | React.TouchEvent) => void;
   };
+
+  const [dbStore, setDashboardState] =
+    useRecoilState<DashboardState>(dashboardState);
+
+  const { model } = dbStore;
 
   return (
     <Container>
@@ -81,6 +92,29 @@ const Dashboard: React.FC<DashboardProps> = (props: DashboardProps) => {
               <DataBoardContent>
                 <div>
                   <PageHeader title="Dashboard"></PageHeader>
+                  <section
+                    css={css`
+                      padding: 24px;
+                    `}
+                  >
+                    {'You can select a model to analyze the test dataset.'}
+                  </section>
+                  <Tabs
+                    tabPosition={'left'}
+                    style={{
+                      width: '100%',
+                    }}
+                    value={model}
+                    onChange={(activeKey: 'Xgboost' | 'Clf') => {
+                      setDashboardState(prev => ({
+                        ...prev,
+                        model: activeKey,
+                      }));
+                    }}
+                  >
+                    <Tabs.TabPane tab="Xgboost" key="Xgboost"></Tabs.TabPane>
+                    <Tabs.TabPane tab="Clf" key="Clf"></Tabs.TabPane>
+                  </Tabs>
                 </div>
               </DataBoardContent>
             </DataBoardWrapperSection>
@@ -110,7 +144,7 @@ const Dashboard: React.FC<DashboardProps> = (props: DashboardProps) => {
                   : '100%',
             }}
           >
-            <div>graph table</div>
+            <Visualization></Visualization>
           </GraphTableWrapperSection>
         </ResizeWrapper>
       )}
