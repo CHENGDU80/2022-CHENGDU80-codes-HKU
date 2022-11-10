@@ -16,6 +16,7 @@ specifiers:
   '@types/node': ^14.14.31
   '@types/react': ^17.0.0
   '@types/react-dom': ^17.0.0
+  '@types/tableau-js-api': ^2.8.2
   '@vitejs/plugin-react': 1.0.7
   antd: ^4.22.2
   await-to-js: ^3.0.0
@@ -75,6 +76,7 @@ devDependencies:
   '@types/node': 14.18.23
   '@types/react': 17.0.48
   '@types/react-dom': 17.0.17
+  '@types/tableau-js-api': 2.8.2
   cypress: 6.9.1
   less: 4.1.3
   typescript: 4.7.4
@@ -1158,6 +1160,10 @@ packages:
 
   /@types/sizzle/2.3.3:
     resolution: {integrity: sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==}
+    dev: true
+
+  /@types/tableau-js-api/2.8.2:
+    resolution: {integrity: sha512-a5ct/wBn5D0fyGzIpVAMWWwWDU09alRrOGdlPGLeZgEqqrQCp45OH0QfR763ZOFcgKM16NVFLQY6YrQ+lLMhlw==}
     dev: true
 
   /@umijs/route-utils/2.2.0:

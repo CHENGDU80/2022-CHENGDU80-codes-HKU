@@ -104,7 +104,7 @@ const Graph: React.FC<GraphProps> = (props: GraphProps) => {
                 {model === 'Xgboost' && (
                   <Tabs
                     onChange={setGraphActiveKey}
-                    defaultActiveKey="ROC"
+                    defaultActiveKey="areaChart"
                     centered
                   >
                     <TabPane
@@ -143,7 +143,7 @@ const Graph: React.FC<GraphProps> = (props: GraphProps) => {
                       <AreaChartCustomStyle></AreaChartCustomStyle>
                     </TabPane>
                     <TabPane
-                      tab="PieChart"
+                      tab="Result"
                       key="pieChart"
                       style={{
                         padding: 14,

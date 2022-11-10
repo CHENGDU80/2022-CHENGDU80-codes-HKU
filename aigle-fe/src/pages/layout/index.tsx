@@ -1,4 +1,11 @@
-import React, { FC, useEffect, Suspense, useCallback, useState } from 'react';
+import React, {
+  FC,
+  useEffect,
+  Suspense,
+  useCallback,
+  useState,
+  useMemo,
+} from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { MenuList, MenuChild } from '@/types/menu.interface';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
@@ -15,25 +22,26 @@ import RightContent from './components/RightContent';
 
 import { layoutSettings } from '../../const/layout';
 import ErrorBoundary from '@/components/errorBoundary';
+import { withSemiIconStyle } from '@/style';
+import { IconCode, IconDesktop, IconHistogram } from '@douyinfe/semi-icons';
 
 const menuList = [
   {
     path: '/training',
     name: 'Training',
-    icon: 'heart',
+    icon: 'training',
+  },
+  {
+    path: '/overview',
+    name: 'Data Overview',
+    icon: 'overview',
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
-    icon: 'smile',
+    icon: 'dashboard',
   },
 ];
-
-const IconMap: { [key: string]: React.ReactNode } = {
-  smile: <SmileOutlined />,
-  heart: <HeartOutlined />,
-  frown: <FrownOutlined />,
-};
 
 const LayoutPage: FC = ({ children }) => {
   const [user, setUser] = useRecoilState(userState);
@@ -43,6 +51,33 @@ const LayoutPage: FC = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { formatMessage } = useLocale();
+
+  const IconMap: { [key: string]: React.ReactNode } = useMemo(
+    () => ({
+      training: (
+        <IconCode
+          style={withSemiIconStyle({
+            marginRight: collapsed ? 16 : 8,
+          })}
+        />
+      ),
+      overview: (
+        <IconHistogram
+          style={withSemiIconStyle({
+            marginRight: collapsed ? 16 : 8,
+          })}
+        />
+      ),
+      dashboard: (
+        <IconDesktop
+          style={withSemiIconStyle({
+            marginRight: collapsed ? 16 : 8,
+          })}
+        />
+      ),
+    }),
+    [collapsed]
+  );
 
   useEffect(() => {
     if (location.pathname === '/') {

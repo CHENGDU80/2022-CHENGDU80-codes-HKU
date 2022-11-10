@@ -23,8 +23,6 @@ const BarChartVisualization: React.FC<BarChartVisualizationProps> = (
 ) => {
   const { data = [] } = props;
 
-  console.log('%c data >>>', 'background: yellow; color: blue', data);
-
   const [dbStore, setDashBoardState] = useRecoilState(dashboardState);
 
   const barData: BarDatum[] = useMemo(() => {
@@ -35,8 +33,6 @@ const BarChartVisualization: React.FC<BarChartVisualizationProps> = (
       })) || []
     );
   }, [data]);
-
-  console.log('%c barData  >>>', 'background: yellow; color: blue', barData);
 
   const { barChartVisualizationSettings } = dbStore;
 

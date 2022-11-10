@@ -8,6 +8,7 @@ import { useRecoilState } from 'recoil';
 import Empty from '@components/illustration/empty';
 import { cloneDeep } from 'lodash';
 import { dashboardState } from '@stores/dashboard';
+import { Typography } from 'antd';
 
 interface PieChartVisualizationProps {}
 
@@ -56,10 +57,12 @@ const PieChartVisualization: React.FC<PieChartVisualizationProps> = (
         {
           id: 'Negitive Sample',
           value: 44.33,
+          color: '#f5222d',
         },
         {
           id: 'Positive Sample',
           value: 55.67,
+          color: '#3CB346',
         },
       ]),
     []
@@ -105,12 +108,24 @@ const PieChartVisualization: React.FC<PieChartVisualizationProps> = (
   return (
     <>
       <section>
+        <Typography.Title
+          level={3}
+          style={{
+            marginLeft: 20,
+            marginTop: 24,
+            marginBottom: 24,
+          }}
+        >
+          Your risk level: Medium
+        </Typography.Title>
         <Pie
           {...commonProperties}
           {...pieChartVisualizationSettings}
           startAngle={90}
           endAngle={-90}
           innerRadius={0.6}
+          valueFormat={(value: number) => `${value}%`}
+          colors={{ datum: 'data.color' }}
         ></Pie>
       </section>
     </>

@@ -113,7 +113,7 @@ const Dashboard: React.FC<DashboardProps> = (props: DashboardProps) => {
                     }}
                   >
                     <Tabs.TabPane tab="Xgboost" key="Xgboost"></Tabs.TabPane>
-                    <Tabs.TabPane tab="Clf" key="Clf"></Tabs.TabPane>
+                    <Tabs.TabPane tab="Lightbgm" key="Clf"></Tabs.TabPane>
                   </Tabs>
                 </div>
               </DataBoardContent>

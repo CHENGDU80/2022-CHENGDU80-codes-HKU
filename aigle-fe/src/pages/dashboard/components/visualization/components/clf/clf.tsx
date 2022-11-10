@@ -62,7 +62,7 @@ const Clf: React.FC<ClfProps> = (props: ClfProps) => {
               textAlign: 'center',
             }}
           >
-            Clf
+            Lightbgm
           </Title>
           <ButtonSection>
             <Button

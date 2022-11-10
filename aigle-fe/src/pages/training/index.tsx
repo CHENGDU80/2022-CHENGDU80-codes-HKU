@@ -36,6 +36,7 @@ const InfoSection = styled.section`
   justify-content: center;
   margin-top: 64px;
   text-align: center;
+  font-size: 17px;
 `;
 
 const LoadingSection = styled.section`
@@ -58,11 +59,7 @@ const btnTextMap: { [k in TrainingState['step']]: string } = {
 const infoTextMap: { [k in TrainingState['step']]: string | JSX.Element } = {
   beforeLoadData: '',
   loadingData: 'This step may take 1 or 2 minutes, please wait patiently.',
-  loadDataFinished:
-    'After deleting the missing data, your dataset has 73500 rows, 378 columns left. Click next step to preprocess the data.',
-  loadDataFailed: 'Retry',
-  preprocessing: 'Preprocessing...',
-  preprocessingFinished: (
+  loadDataFinished: (
     <>
       <>Your dataset has 625 rows which have over 25% missing data.</>
       <br></br>
@@ -71,6 +68,17 @@ const infoTextMap: { [k in TrainingState['step']]: string | JSX.Element } = {
         result, so we deleted them before we analysis your dataset.
       </>
       <br></br>
+      <>Click next step to preprocess the data.</>
+    </>
+  ),
+  loadDataFailed: 'Retry',
+  preprocessing: 'Preprocessing...',
+  preprocessingFinished: (
+    <>
+      After deleting the missing data, your dataset has 73500 rows, 378 columns
+      left.
+      <></>
+      <br></br>
       <>You can use test dataset to predict the result now!</>
       <br></br>
     </>
@@ -78,7 +86,7 @@ const infoTextMap: { [k in TrainingState['step']]: string | JSX.Element } = {
   preprocessingFailed: 'Retry',
 };
 
-const overviewPage: React.FC = () => {
+const trainingPage: React.FC = () => {
   const {
     isLoading,
     isSuccess,
@@ -162,9 +170,9 @@ const overviewPage: React.FC = () => {
             type="primary"
             style={{
               borderRadius: 24,
-              minWidth: 200,
+              minWidth: 220,
               height: 48,
-              fontSize: 16,
+              fontSize: 19,
               fontWeight: 700,
               padding: '0 24px',
             }}
@@ -210,4 +218,4 @@ const overviewPage: React.FC = () => {
   );
 };
 
-export default overviewPage;
+export default trainingPage;
