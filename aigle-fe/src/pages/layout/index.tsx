@@ -27,15 +27,16 @@ import { IconCode, IconDesktop, IconHistogram } from '@douyinfe/semi-icons';
 
 const menuList = [
   {
-    path: '/training',
-    name: 'Training',
-    icon: 'training',
-  },
-  {
     path: '/overview',
     name: 'Data Overview',
     icon: 'overview',
   },
+  {
+    path: '/training',
+    name: 'Training',
+    icon: 'training',
+  },
+
   {
     path: '/dashboard',
     name: 'Dashboard',
@@ -81,7 +82,7 @@ const LayoutPage: FC = ({ children }) => {
 
   useEffect(() => {
     if (location.pathname === '/') {
-      navigate('/training');
+      navigate('/overview');
     }
   }, [navigate, location]);
 
